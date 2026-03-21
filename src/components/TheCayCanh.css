@@ -1,0 +1,33 @@
+/* Thẻ cây bo tròn 20px và có bóng đổ */
+.the-cay-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #f1f5f9;
+  transition: 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.the-cay-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.khung-anh-cay { height: 230px; overflow: hidden; }
+.khung-anh-cay img { width: 100%; height: 100%; object-fit: cover; }
+
+.noidung-cay { padding: 20px; text-align: center; }
+.gia-tien { color: #10b981; font-weight: 800; font-size: 1.2rem; margin: 10px 0; }
+.do-am { font-size: 0.85rem; color: #64748b; margin-bottom: 15px; }
+
+.nut-mua-nhanh {
+  width: 100%;
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}

@@ -1,0 +1,111 @@
+/* Tổng thể trang */
+.san-pham-page {
+    padding: 30px 30px;
+    min-height: 100vh;
+}
+
+/* Thanh tìm kiếm & Bộ lọc */
+.filter-search-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 450px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px 25px;
+    border-radius: 50px; /* Bo tròn hoàn toàn */
+    border: 1px solid #e2e8f0;
+    outline: none;
+    font-size: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    transition: 0.3s;
+}
+
+.search-box input:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+.filter-tags {
+    display: flex;
+    gap: 12px;
+}
+
+.nut-loc {
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    cursor: pointer;
+    font-weight: 600;
+    color: #64748b;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.nut-loc.dang-chon {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Lưới sản phẩm - CHUẨN 4 CỘT */
+.luoi-cay {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột trên PC */
+    gap: 20px;
+    /* padding:30px; */
+}
+
+.khong-tim-thay {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px;
+    color: #64748b;
+    font-style: italic;
+}
+
+/* --- RESPONSIVE (CHO ĐIỆN THOẠI & TABLET) --- */
+
+@media (max-width: 1024px) {
+    .luoi-cay {
+        grid-template-columns: repeat(3, 1fr); /* Máy tính nhỏ hiện 3 cột */
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-search-section {
+        flex-direction: column; /* Đẩy tìm kiếm lên trên lọc */
+        align-items: stretch;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .filter-tags {
+        overflow-x: auto; /* Vuốt ngang trên mobile */
+        padding: 5px 0;
+        justify-content: flex-start;
+    }
+
+    .luoi-cay {
+        grid-template-columns: repeat(2, 1fr); /* Điện thoại hiện 2 cột */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .luoi-cay {
+        grid-template-columns: 1fr; /* Điện thoại siêu nhỏ hiện 1 cột */
+    }
+}

@@ -1,0 +1,35 @@
+/* src/components/ThanhDieuHuong.css */
+.navbar-chinh {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+  position: sticky; top: 0; z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.noi-dung-nav { display: flex; justify-content: space-between; align-items: center; }
+.logo-green { font-size: 1.5rem; font-weight: 800; color: #059669; text-decoration: none; }
+.links-dieu-huong a { margin-left: 25px; text-decoration: none; color: #64748b; font-weight: 600; transition: 0.3s; }
+.links-dieu-huong a:hover { color: #10b981; }
+
+.gio-hang-icon { font-size: 1.5rem; position: relative; }
+.badge-so-luong {
+  position: absolute; top: -8px; right: -12px;
+  background: #ef4444; color: white; font-size: 0.75rem;
+  padding: 2px 7px; border-radius: 50%; border: 2px solid white;
+}
+/* Thêm vào cuối file ThanhDieuHuong.css */
+@media (max-width: 768px) {
+    .noi-dung-nav {
+        flex-wrap: wrap; /* Cho phép các phần tử nhảy dòng nếu thiếu chỗ */
+        gap: 10px;
+    }
+    
+    .logo-green span {
+        font-size: 1.2rem; /* Thu nhỏ chữ logo */
+    }
+
+    .links-dieu-huong a {
+        margin-left: 15px; /* Giảm khoảng cách giữa các link */
+        font-size: 0.9rem;
+    }
+}

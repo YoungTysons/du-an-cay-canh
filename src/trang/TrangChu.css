@@ -1,0 +1,236 @@
+/* Container thời tiết dàn hàng ngang */
+.thoi-tiet-card {
+  /* Màu xanh trầm đúng như ảnh bạn gửi */
+  background: linear-gradient(90deg, #3d7a5a, #4dab76); 
+  border-radius: 20px;
+  padding: 30px 50px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Đẩy các khối ra 2 bên */
+  margin: 30px 30px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Khối Trái: Nhiệt độ */
+.thoi-tiet-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.location-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  opacity: 0.9;
+}
+
+.temp-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.temp-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.weather-icon {
+  width: 70px;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+/* Khối Giữa: Chi tiết (Có vạch kẻ dọc) */
+.thoi-tiet-mid {
+  padding-left: 35px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3); /* Vạch dọc mờ */
+  margin-left: 40px;
+  flex: 1; /* Chiếm không gian ở giữa */
+}
+
+.thoi-tiet-mid p {
+  margin: 8px 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* Khối Phải: Ô AI nhỏ gọn bám lề phải */
+.thoi-tiet-right {
+  flex: 1.5; /* Khối chứa rộng hơn để đẩy ô AI sang phải */
+  display: flex;
+  justify-content: flex-end; /* Đẩy ô AI sát lề phải */
+}
+
+.ai-advice-box {
+  background: rgba(255, 255, 255, 0.18); /* Nền trắng mờ (Glassmorphism) */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 18px 25px;
+  border-radius: 18px; /* Bo góc cực tròn xịn */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  
+  /* ĐÂY LÀ PHẦN THU NHỎ Ô AI */
+  max-width: 380px; /* Giới hạn độ rộng tối đa */
+}
+
+.ai-advice-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #f8fafc;
+}
+
+.ai-advice-box b {
+  font-weight: 800;
+  margin-right: 5px;
+}
+
+/* Tối ưu cho Mobile: Tự động nhảy dòng khi màn hình hẹp */
+@media (max-width: 1000px) {
+  .thoi-tiet-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px;
+  }
+  .thoi-tiet-mid {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+    margin: 20px 0;
+  }
+  .thoi-tiet-right {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.welcome-banner {
+  text-align: center;
+  padding: 80px 0;
+}
+/* Lớp nền mờ - Ép nó hiện lên trên cùng */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75); /* Nền tối hơn để nổi bật Modal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999; /* Số cực lớn để đè lên Navbar và mọi thứ khác */
+  backdrop-filter: blur(6px); /* Làm mờ trang web phía sau */
+  padding: 20px;
+}
+
+/* Khung nội dung Modal */
+.modal-content {
+  background: white;
+  width: 100%;
+  max-width: 850px;
+  border-radius: 30px; /* Bo tròn cực mạnh cho sang */
+  position: relative;
+  overflow: hidden;
+  animation: hienModal 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes hienModal {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Bố cục 2 cột trong Modal */
+.modal-body {
+  display: flex;
+  flex-wrap: wrap; /* Tự xuống dòng trên điện thoại */
+}
+
+.modal-image-detail {
+  width: 45%;
+  height: 450px;
+  object-fit: cover;
+}
+
+.modal-info {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-info h2 {
+  font-size: 2rem;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.modal-price {
+  font-size: 1.8rem;
+  color: #10b981;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+/* Nút đóng (Dấu X) */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 35px;
+  background: white;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  z-index: 10;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: #f1f5f9;
+  color: #ef4444;
+}
+
+/* Nút Mua ngay trong Modal */
+.nut-mua {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.nut-mua:hover {
+  background: #059669;
+  transform: translateY(-3px);
+}
+
+/* Responsive cho Mobile */
+@media (max-width: 768px) {
+  .modal-image-detail {
+    width: 100%;
+    height: 300px;
+  }
+  .modal-info {
+    padding: 25px;
+  }
+  .modal-info h2 {
+    font-size: 1.5rem;
+  }
+}
