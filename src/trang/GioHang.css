@@ -1,0 +1,247 @@
+.gio-hang-page {
+  padding: 40px 20px;
+  min-height: 80vh;
+}
+.cart-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.cart-header h1 {
+  font-size: 2rem;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+.cart-steps {
+  color: #94a3b8;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+.cart-table th {
+  border-bottom: 2px solid #f1f5f9;
+  padding: 15px;
+  text-align: left;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+.cart-table td {
+  padding: 20px 15px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 600;
+  color: #1e293b;
+}
+.product-info img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border-radius: 50px;
+  width: fit-content;
+  padding: 5px;
+}
+.quantity-control button {
+  border: none;
+  background: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #10b981;
+}
+.quantity-control input {
+  border: none;
+  background: none;
+  width: 40px;
+  text-align: center;
+  font-weight: 700;
+  outline: none;
+}
+
+.subtotal {
+  color: #10b981;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+.delete-btn {
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+.total-box {
+  text-align: right;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+.total-box h3 span {
+  color: #10b981;
+  font-size: 1.8rem;
+  margin-left: 15px;
+}
+
+.btn-thanh-toan {
+  margin-top: 20px;
+  background: #1e293b;
+  color: white;
+  border: none;
+  padding: 15px 50px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-thanh-toan:hover {
+  background: #10b981;
+  transform: scale(1.05);
+}
+/* Container bao ngoài nút "Quay lại" khi giỏ hàng trống */
+.empty-cart {
+  display: flex;
+  flex-direction: column; /* Xếp các phần tử (chữ, nút) theo hàng dọc */
+  align-items: center;    /* Căn giữa các phần tử theo chiều ngang */
+  justify-content: center; /* Căn giữa các phần tử theo chiều dọc */
+  text-align: center;     /* Căn giữa văn bản */
+  
+  /* Đảm bảo container chiếm hết chiều cao khả dụng để căn giữa theo chiều dọc */
+  min-height: 50vh;       /* Chiếm ít nhất 50% chiều cao màn hình, bạn có thể điều chỉnh con số này */
+  padding: 40px 20px;     /* Khoảng trống bên trong */
+  
+  /* Thêm một chút style cho đẹp */
+  background: rgba(16, 185, 129, 0.05); /* Nền mờ nhẹ màu xanh lá */
+  border-radius: 20px;     /* Bo tròn góc container */
+  margin: 40px auto;       /* Căn giữa container theo chiều ngang của trang */
+  max-width: 600px;        /* Giới hạn độ rộng tối đa của container */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ cho nổi bật */
+}
+
+/* Kiểu dáng cho chữ "Giỏ hàng trống" */
+.empty-cart p {
+  font-size: 1.5rem;       /* Chữ to hơn */
+  color: #64748b;         /* Màu xám nhẹ */
+  font-weight: 600;       /* Đậm vừa phải */
+  margin-bottom: 30px;    /* Khoảng cách đến nút "Quay lại" */
+}
+
+/* Nút "Quay lại" (sử dụng style Pill bo tròn đã giới thiệu trước đó) */
+.btn-quay-lai {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  
+  /* Màu sắc */
+  background: #10b981;
+  color: white;
+  
+  /* Kiểu dáng */
+  border: none;
+  padding: 14px 30px;
+  border-radius: 50px; /* Bo tròn hoàn toàn kiểu viên thuốc */
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  /* Hiệu ứng */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
+  text-decoration: none;
+}
+
+/* Hiệu ứng khi di chuột (hover) */
+.btn-quay-lai:hover {
+  background: #059669; /* Xanh đậm hơn */
+  transform: translateX(-5px) translateY(-2px); /* Dịch nhẹ sang trái và lên */
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+  .product-info img {
+    width: 60px;
+    height: 60px;
+  }
+  .cart-table td {
+    padding: 15px 5px;
+  }
+}
+/* Container chứa tổng tiền và nút */
+.total-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Căn lề phải toàn bộ nội dung */
+  gap: 15px;
+  background: #fff;
+  padding: 20px;
+}
+
+/* Chữ Tổng tiền */
+.total-box h3 {
+  font-size: 1.2rem;
+  color: #1b4332;
+  margin: 0;
+}
+
+.total-box h3 span {
+  color: #52b788;
+  font-size: 1.8rem;
+  margin-left: 15px;
+  font-weight: 800;
+}
+
+/* NÚT THANH TOÁN KIỂU CŨ */
+.btn-thanh-toan {
+  background-color: #1b4332; /* Màu xanh đậm thanh lịch */
+  color: white;
+  border: none;
+  padding: 12px 40px;       /* Độ rộng vừa phải, không quá to */
+  border-radius: 8px;       /* Bo góc nhẹ (không phải hình tròn) */
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-thanh-toan:hover {
+  background-color: #2d6a4f; /* Sáng lên một chút khi di chuột */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-thanh-toan:active {
+  transform: translateY(0);
+}
