@@ -1,6 +1,6 @@
-import React from 'react';
-import { useWeather } from '../hooks/useWeather'; // Import hook vừa tạo
-import './TrangChu.css';
+import React from "react";
+import { useWeather } from "../../hooks/useWeather"; // Import hook vừa tạo
+import "./TrangChu.css";
 
 function TrangChu() {
   // Gọi logic từ file riêng
@@ -14,7 +14,9 @@ function TrangChu() {
           <p className="location-text">Hà Nội hiện tại</p>
           <div className="temp-group">
             <span className="temp-number">{thoiTiet.nhietDo}°C</span>
-            {thoiTiet.icon && <img src={thoiTiet.icon} alt="weather" className="weather-icon" />}
+            {thoiTiet.icon && (
+              <img src={thoiTiet.icon} alt="weather" className="weather-icon" />
+            )}
           </div>
         </div>
 
@@ -27,7 +29,9 @@ function TrangChu() {
         {/* KHỐI PHẢI */}
         <div className="thoi-tiet-right">
           <div className="ai-advice-box">
-            <p>💡 <b>Gợi ý AI:</b> {thoiTiet.goiY}</p>
+            <p>
+              💡 <b>Gợi ý AI:</b> {thoiTiet.goiY}
+            </p>
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import React from "react";
-import TheCayCanh from "../components/TheCayCanh";
-import { useProductFilter } from "../hooks/useLocSanPham"; // Import hook
+import TheCayCanh from "../../components/TheCayCanh";
+import { useProductFilter } from "../../hooks/useLocSanPham"; // Import hook
 import "./SanPham.css";
 
 function SanPham({ setGioHang, setCayDangXem }) {
