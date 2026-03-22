@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { danhSachCayCanh } from "../data/DanhSachCay";
+import React from "react";
 import TheCayCanh from "../components/TheCayCanh";
+import { useProductFilter } from "../hooks/useLocSanPham"; // Import hook
 import "./SanPham.css";
 
 function SanPham({ setGioHang, setCayDangXem }) {
-  const [tabHienTai, setTabHienTai] = useState("tat-ca");
-  const [tuKhoa, setTuKhoa] = useState("");
-
-  // Logic lọc và tìm kiếm kết hợp
-  const cayHienThi = danhSachCayCanh.filter(
-    (cay) =>
-      (tabHienTai === "tat-ca" || cay.loai === tabHienTai) &&
-      cay.ten.toLowerCase().includes(tuKhoa.toLowerCase()),
-  );
+  // Lấy toàn bộ logic từ Hook
+  const {
+    tabHienTai,
+    setTabHienTai,
+    tuKhoa,
+    setTuKhoa,
+    cayHienThi,
+    danhSachTabs,
+  } = useProductFilter();
 
   return (
     <div className="san-pham-page">
@@ -28,12 +28,7 @@ function SanPham({ setGioHang, setCayDangXem }) {
             />
           </div>
           <div className="filter-tags">
-            {[
-              { id: "tat-ca", label: "Tất cả" },
-              { id: "trong-nha", label: "Trong nhà" },
-              { id: "sen-da", label: "Sen đá" },
-              { id: "ngoai-troi", label: "Ngoài trời" },
-            ].map((tag) => (
+            {danhSachTabs.map((tag) => (
               <button
                 key={tag.id}
                 className={`nut-loc ${tabHienTai === tag.id ? "dang-chon" : ""}`}
@@ -52,7 +47,7 @@ function SanPham({ setGioHang, setCayDangXem }) {
               <TheCayCanh
                 key={cay.id}
                 cay={cay}
-                setGioHang={setGioHang}
+                setGioHang={() => setGioHang(cay)}
                 setCayDangXem={setCayDangXem}
               />
             ))

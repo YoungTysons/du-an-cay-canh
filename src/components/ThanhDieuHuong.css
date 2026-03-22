@@ -17,6 +17,36 @@
   background: #ef4444; color: white; font-size: 0.75rem;
   padding: 2px 7px; border-radius: 50%; border: 2px solid white;
 }
+.gio-hang-container {
+  text-decoration: none; /* Bỏ gạch chân */
+  color: inherit;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.gio-hang-container:hover {
+  transform: scale(1.1); /* Hiệu ứng phóng to nhẹ khi di chuột */
+}
+
+.gio-hang-icon {
+  font-size: 1.6rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.badge-so-luong {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #ef4444; /* Màu đỏ nổi bật */
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50px;
+  border: 2px solid white;
+  font-weight: bold;
+}
 /* Thêm vào cuối file ThanhDieuHuong.css */
 @media (max-width: 768px) {
     .noi-dung-nav {
