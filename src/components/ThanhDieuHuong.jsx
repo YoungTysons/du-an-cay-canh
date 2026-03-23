@@ -18,7 +18,7 @@ function ThanhDieuHuong({ gioHangItems }) {
         <div className="links-dieu-huong">
           <Link to="/">Trang chủ</Link>
           <Link to="/san-pham">Sản phẩm</Link>
-          <a href="/">Chăm sóc</a>
+          <Link to="/cham-soc">Chăm sóc</Link>
           <Link to="/gio-hang">Giỏ hàng</Link> 
           <a href="#lien-he">Liên hệ</a>
         </div>
