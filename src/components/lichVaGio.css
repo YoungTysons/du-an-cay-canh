@@ -1,0 +1,22 @@
+.top-bar-info {
+  display: flex;
+  gap: 20px;
+  background: #1b4332;
+  color: white;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  justify-content: flex-end; /* Đẩy sang bên phải */
+}
+
+.clock-item, .calendar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-text {
+  font-family: 'Courier New', Courier, monospace; /* Kiểu font đồng hồ điện tử */
+  font-weight: bold;
+  color: #52b788;
+}

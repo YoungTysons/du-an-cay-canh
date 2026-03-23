@@ -13,7 +13,8 @@ function SanPham({ setGioHang, setCayDangXem }) {
     cayHienThi,
     danhSachTabs,
   } = useProductFilter();
-
+// Trong file SanPham.jsx, hãy thêm dòng này ngay dưới dòng const { ... } = useProductFilter();
+console.log("Số lượng cây hiển thị:", cayHienThi.length);
   return (
     <div className="san-pham-page">
       <div className="khung-chinh">

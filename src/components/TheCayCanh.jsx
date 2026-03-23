@@ -1,32 +1,36 @@
 import React from "react";
-import './TheCayCanh.css'; // Kết nối file CSS riêng
+import './TheCayCanh.css'; 
 
 function TheCayCanh({ cay, setGioHang, setCayDangXem }) {
-  // Hàm xử lý mua nhanh (Ngăn click vào thẻ cây)
+  
   const handleMuaNhanh = (e) => {
     e.stopPropagation(); 
-    setGioHang((prev) => prev + 1); 
+    // Gửi cả đối tượng cây vào giỏ hàng
+    setGioHang(cay); 
   };
+
+  // Lấy tên và ảnh linh hoạt
+  const tenHienThi = cay.tenCay || cay.ten || cay.Ten || "Cây chưa đặt tên";
+  const giaHienThi = Number(cay.gia || cay.Gia || 0).toLocaleString();
+  const doAmHienThi = cay.doAmLyTuong || cay.doAm || cay.DoAm || 0;
+  const tenFileAnh = cay.anh || cay.Anh || "";
 
   return (
     <div className="the-cay-card" onClick={() => setCayDangXem(cay)}>
-      {/* 1. Ảnh cây ở trên */}
       <div className="khung-anh-cay">
         <img 
-          src={cay.anh} 
-          alt={cay.ten} 
-          onError={(e) => (e.target.src = "https://via.placeholder.com/600")} 
+          src={`/images/${tenFileAnh}`} 
+          alt={tenHienThi} 
+          onError={(e) => (e.target.src = "https://via.placeholder.com/300?text=Loi+Anh")} 
         />
       </div>
 
-      {/* 2. Thông tin ở dưới */}
       <div className="noidung-cay">
-        <h4>{cay.ten}</h4>
-        <p className="gia-tien">{cay.gia?.toLocaleString() || "0"}đ</p>
+        <h4>{tenHienThi}</h4> 
+        <p className="gia-tien">{giaHienThi}đ</p>
         
-        {/* Phần hiển thị độ ẩm như trong hình */}
         <div className="do-am-display">
-          💧 Độ ẩm lý tưởng: <span>{cay.doAm || "Chưa cập nhật"}</span>
+          💧 Độ ẩm lý tưởng: <span>{doAmHienThi}%</span>
         </div>
 
         <button className="nut-mua-nhanh" onClick={handleMuaNhanh}>

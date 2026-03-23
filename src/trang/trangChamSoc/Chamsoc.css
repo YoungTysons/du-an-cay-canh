@@ -1,0 +1,198 @@
+.cham-soc-page {
+    padding: 40px 20px;
+    min-height: 100vh;
+    background-color: #f8fafc;
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-section h1 {
+    font-size: 2.5rem;
+    color: #1b4332;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.header-section p {
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+/* Thanh tìm kiếm cây */
+.search-cay-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-cay-section input {
+    flex: 1;
+    padding: 15px 25px;
+    border-radius: 50px;
+    border: 2px solid #e2e8f0;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.search-cay-section input:focus {
+    border-color: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.search-cay-section button {
+    padding: 15px 35px;
+    border-radius: 50px;
+    border: none;
+    background: #1b4332;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-cay-section button:hover {
+    background: #10b981;
+    transform: translateY(-2px);
+}
+
+/* Thẻ thông tin cây tìm thấy */
+.cay-info-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+.cay-info-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.info-text h2 {
+    color: #1e293b;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.info-text p {
+    margin: 8px 0;
+    font-size: 1.1rem;
+    color: #475569;
+}
+
+/* Lưới lịch tưới 7 ngày */
+.lich-title {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #1b4332;
+    font-weight: 800;
+}
+
+.lich-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.lich-item {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.3s;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.ngay-thang {
+    font-weight: 700;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.nhiet-do {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.status-badge {
+    font-size: 1.5rem;
+}
+
+.goi-y {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* TRẠNG THÁI MÀU SẮC THEO THỜI TIẾT */
+
+/* 1. Trời mưa - Không tưới */
+.lich-item.mua {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+.lich-item.mua .goi-y { color: #64748b; }
+
+/* 2. Đến lịch cần tưới */
+.lich-item.tuoi {
+    background: #ecfdf5;
+    border-color: #10b981;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
+}
+.lich-item.tuoi .goi-y { color: #059669; }
+.lich-item.tuoi .ngay-thang { color: #059669; }
+
+/* 3. Trời nắng - Chưa đến lịch */
+.lich-item.nang {
+    background: #fffbeb;
+    border-color: #fcd34d;
+}
+.lich-item.nang .goi-y { color: #b45309; }
+
+/* Hiệu ứng load trang */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.error-msg {
+    color: #ef4444;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .cay-info-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .search-cay-section {
+        flex-direction: column;
+    }
+    .lich-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
