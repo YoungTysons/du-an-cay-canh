@@ -1,0 +1,83 @@
+CREATE DATABASE db_green_thumb;
+GO
+USE db_green_thumb;
+GO
+-- 1. Bảng Người dùng (Lưu tài khoản khách hàng)
+CREATE TABLE NguoiDung (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    hoTen NVARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    matKhau VARCHAR(255) NOT NULL, -- Lưu chữ thuần như bạn muốn
+    soDienThoai VARCHAR(15),
+    diaChi NVARCHAR(MAX),
+    vaiTro VARCHAR(20) DEFAULT 'khach_hang',
+    ngayTao DATETIME DEFAULT GETDATE()
+);
+
+-- 2. Bảng Sản phẩm (Kho cây cảnh)
+CREATE TABLE SanPham (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    tenCay NVARCHAR(255) NOT NULL,
+    gia DECIMAL(10,2) NOT NULL,
+    loai VARCHAR(50) NOT NULL, -- trong-nha, sen-da, ngoai-troi
+    anh VARCHAR(255),
+    doAmLyTuong INT,           -- Chỉ số để AI so sánh
+    moTa NVARCHAR(MAX)
+);
+
+-- 3. Bảng Đơn hàng (Lưu thông tin khi khách bấm mua)
+CREATE TABLE DonHang (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    nguoiDungId INT,
+    tenNguoiNhan NVARCHAR(100),
+    soDienThoaiNhan VARCHAR(15),
+    diaChiGiaoHang NVARCHAR(MAX),
+    tongTien DECIMAL(10,2),
+    ngayDat DATETIME DEFAULT GETDATE(),
+    trangThai NVARCHAR(50) DEFAULT N'Chờ xác nhận',
+    FOREIGN KEY (nguoiDungId) REFERENCES NguoiDung(id)
+);
+
+-- 4. Bảng Lịch chăm sóc (Dành cho tính năng AI nhắc tưới cây)
+CREATE TABLE LichChamsoc (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    nguoiDungId INT,
+    sanPhamId INT,
+    ngayTuoiGanNhat DATE,
+    ghiChuAI NVARCHAR(MAX),
+    FOREIGN KEY (nguoiDungId) REFERENCES NguoiDung(id),
+    FOREIGN KEY (sanPhamId) REFERENCES SanPham(id)
+);
+INSERT INTO SanPham (tenCay, gia, loai, anh, doAmLyTuong, moTa) 
+VALUES 
+(N'Cây Lưỡi Hổ', 120000, 'trong-nha', 'kimtien.webp', 30, N'Cây lọc không khí cực tốt, dễ chăm sóc.'),
+(N'Sen Đá Hoa Hồng', 35000, 'sen-da', 'kimtien.webp', 20, N'Nhỏ nhắn, xinh xắn, phù hợp để bàn làm việc.'),
+(N'Cây Trầu Bà Đế Vương', 180000, 'trong-nha', 'kimtien.webp', 50, N'Mang lại vẻ sang trọng và quyền lực cho không gian.'),
+(N'Cây Xương Rồng Tròn', 55000, 'ngoai-troi', 'kimtien.webp', 15, N'Chịu nắng tốt, ít cần tưới nước.'),
+(N'Cây Lan Ý', 95000, 'trong-nha', 'kimtien.webp', 60, N'Lọc bụi bẩn và các khí độc hại trong phòng.'),
+(N'Sen Đá Móng Rồng', 40000, 'sen-da', 'kimtien.webp', 25, N'Hình dáng độc đáo, sức sống bền bỉ.'),
+(N'Cây Bàng Singapore', 220000, 'trong-nha', 'kimtien.webp', 45, N'Lá to xanh mướt, tạo điểm nhấn hiện đại.'),
+(N'Cây Ngũ Gia Bì', 110000, 'ngoai-troi', 'kimtien.webp', 40, N'Có khả năng đuổi muỗi và làm sạch không khí.'),
+(N'Sen Đá Thạch Ngọc', 45000, 'sen-da', 'kimtien.webp', 20, N'Lá mọng nước như những viên ngọc bích.'),
+(N'Cây Kim Ngân', 140000, 'trong-nha', 'kimtien.webp', 35, N'Cây phong thủy mang lại tiền tài và may mắn.');
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('SanPham') AND name = 'tanSuatTuoiNang')
+BEGIN
+    ALTER TABLE SanPham ADD tanSuatTuoiNang INT;
+END
+GO
+
+-- Cập nhật dữ liệu mẫu cho các cây
+UPDATE SanPham SET doAmLyTuong = 40, tanSuatTuoiNang = 3 WHERE tenCay LIKE N'%Kim Tiền%';
+UPDATE SanPham SET doAmLyTuong = 30, tanSuatTuoiNang = 7 WHERE tenCay LIKE N'%Lưỡi Hổ%';
+UPDATE SanPham SET doAmLyTuong = 20, tanSuatTuoiNang = 10 WHERE tenCay LIKE N'%Sen Đá%';
+UPDATE SanPham SET doAmLyTuong = 60, tanSuatTuoiNang = 2 WHERE tenCay LIKE N'%Lan Ý%';
+-- Các cây khác mặc định
+UPDATE SanPham SET doAmLyTuong = 50, tanSuatTuoiNang = 3 WHERE doAmLyTuong IS NULL;
+SELECT N'Cây Lưỡi Hổ' FROM SanPham;
+UPDATE SanPham SET tanSuatTuoiNang = 3 WHERE loai = 'trong-nha';
+UPDATE SanPham SET tanSuatTuoiNang = 10 WHERE loai = 'sen-da';
+UPDATE SanPham SET tanSuatTuoiNang = 2 WHERE loai = 'ngoai-troi';
+
+-- Kiểm tra lại xem cột đã có số chưa
+SELECT tenCay, loai, tanSuatTuoiNang FROM SanPham;
+UPDATE SanPham SET tanSuatTuoiNang = 3 WHERE tanSuatTuoiNang IS NULL;
