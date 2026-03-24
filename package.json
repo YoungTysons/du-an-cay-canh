@@ -6,12 +6,13 @@
   "scripts": {
     "dev1": "vite",
     "server": "node server.cjs",
-  "dev": "concurrently \"npm run dev1\" \"npm run server\"",
+    "dev": "concurrently \"npm run dev1\" \"npm run server\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.13.6",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "mssql": "^12.2.1",
@@ -30,6 +31,6 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
-    "vite": "^8.0.1"
+    "vite": "^8.0.2"
   }
 }

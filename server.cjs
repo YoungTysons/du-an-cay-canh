@@ -16,7 +16,7 @@ app.use(express.json());
 const dbConfig = {
   user: "saa",
   password: "1234",
-  server: "127.0.0.1",
+  server: "localhost",
   database: "db_green_thumb",
   options: {
     encrypt: false,

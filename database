@@ -81,3 +81,8 @@ UPDATE SanPham SET tanSuatTuoiNang = 2 WHERE loai = 'ngoai-troi';
 -- Kiểm tra lại xem cột đã có số chưa
 SELECT tenCay, loai, tanSuatTuoiNang FROM SanPham;
 UPDATE SanPham SET tanSuatTuoiNang = 3 WHERE tanSuatTuoiNang IS NULL;
+
+-- Cấp quyền đọc, ghi, xóa cho user saa trên database này
+ALTER ROLE db_datareader ADD MEMBER saa;
+ALTER ROLE db_datawriter ADD MEMBER saa;
+GO
